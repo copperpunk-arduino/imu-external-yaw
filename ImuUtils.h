@@ -1,4 +1,4 @@
-#ifndef _IMUUTILS_H
+#ifndef _IMUUTILS_H_
 #define _IMUUTILS_H_
 
 #include <InsConstants.h>
@@ -38,4 +38,4 @@ private:
 	void resetQuat();
 };
 
-#endif // _RAZORIMU_H_
+#endif // _IMUUTILS_H_
