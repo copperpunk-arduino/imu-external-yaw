@@ -1,7 +1,7 @@
-#ifndef _IMU_UTILS_H
-#define _IMU_UTILS_H_
+#ifndef _IMUUTILS_H
+#define _IMUUTILS_H_
 
-#include <RazorConstants.h>
+#include <InsConstants.h>
 #include "Arduino.h"
 class ImuUtils
 {
