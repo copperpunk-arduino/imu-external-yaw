@@ -5,3 +5,10 @@ A simple example will be coming soon. For now, please look to the [IcmInsDualGps
 The key functions are as follows:<br>
 *   `updateImuWithQuatDifferentialYaw(float [])` - takes the quaternions published by the ICM-20948 GAME_ROTATION_VECTOR, which does not utilize the magnetometer for yaw measurements.
 *   `rotateYawRad(float)` - uses the correction provided by the dual-GPS Extended Kalman Filter algorithm to update the yaw to its absolute value. NOTE: this value is the change in absolute yaw from the last update. The ICM-20948 yaw measurement cannot be synced, and thus we must keep track of the differentials instead of the absolutes. This seems like the only way, but if there's a better one, please make a suggestion.
+<br><br>
+## <u>Contact Us</u>
+If you have any suggestions for improving this library, there are a few ways to get in touch:<br>
+
+*   Create a new issue
+*   Submit a pull request
+*   Virtual meeting using our [Open Source Office Hours](https://www.copperpunk.com/service-page/open-source-office-hours)
