@@ -1,14 +1,14 @@
-#ifndef _IMUUTILS_H_
-#define _IMUUTILS_H_
+#ifndef _IMUEXTERNALYAW_H_
+#define _IMUEXTERNALYAW_H_
 #include <math.h>
 
-class ImuUtils
+class ImuExternalYaw
 {
 public:
 	void resetQuatUpright();
 	void resetQuatWithAccel(float accel[]);
 	void updateQuaternionsFromEulerRad(float roll_rad, float pitch_rad, float yaw_rad);
-	void updateImuWithQuatDifferentialYaw(float *quat);
+	void updateImuWithQuatDifferentialYaw(float []);
 	void rotateYawRad(float delta_yaw_rad);
 	void calculateRollPitchYaw();
 	void getAttitudeRad(float attitude[]);
@@ -33,4 +33,4 @@ private:
 	void resetQuat();
 };
 
-#endif // _IMUUTILS_H_
+#endif // _IMUEXTERNALYAW_H_

@@ -1,6 +1,6 @@
-#include "ImuUtils.h"
+#include "ImuExternalYaw.h"
 
-void ImuUtils::resetQuatUpright()
+void ImuExternalYaw::resetQuatUpright()
 {
 	q0_ = 1.0f;
 	q1_ = 0.0f;
@@ -8,14 +8,14 @@ void ImuUtils::resetQuatUpright()
 	q3_ = 0.0f;
 }
 
-void ImuUtils::resetQuatWithAccel(float accel[])
+void ImuExternalYaw::resetQuatWithAccel(float accel[])
 {
 	calculateRollPitchWithAccel(accel);
 	yaw_rad_ = 0.0f;
 	resetQuat();
 }
 
-void ImuUtils::updateImuWithQuatDifferentialYaw(float q[])
+void ImuExternalYaw::updateImuWithQuatDifferentialYaw(float q[])
 {
 	// The roll and pitch can be taken directly from the quaternions
 	roll_rad_ = atan2(2.0 * (q[0] * q[1] + q[2] * q[3]), (1.0 - 2.0 * (q[1] * q[1] + q[2] * q[2])));
@@ -38,7 +38,7 @@ void ImuUtils::updateImuWithQuatDifferentialYaw(float q[])
 	resetQuat();
 }
 
-void ImuUtils::rotateYawRad(float delta_yaw_rad)
+void ImuExternalYaw::rotateYawRad(float delta_yaw_rad)
 {
 
 	yaw_rad_ = atan2(2.0 * (q0_ * q3_ + q1_ * q2_), (1.0 - 2.0 * (q2_ * q2_ + q3_ * q3_)));
@@ -46,7 +46,7 @@ void ImuUtils::rotateYawRad(float delta_yaw_rad)
 	resetQuat();
 }
 
-void ImuUtils::calculateRollPitchWithAccel(float accel[])
+void ImuExternalYaw::calculateRollPitchWithAccel(float accel[])
 {
 	roll_rad_ = 0;
 	if (accel[2] != 0)
@@ -62,7 +62,7 @@ void ImuUtils::calculateRollPitchWithAccel(float accel[])
 	}
 }
 
-void ImuUtils::resetQuat()
+void ImuExternalYaw::resetQuat()
 {
 	float cr = cos(roll_rad_ * 0.5F);
 	float sr = sin(roll_rad_ * 0.5F);
@@ -81,7 +81,7 @@ void ImuUtils::resetQuat()
 	q3_ = crcp * sy - sr * spcy;
 }
 
-void ImuUtils::updateQuaternionsFromEulerRad(float roll_rad, float pitch_rad, float yaw_rad)
+void ImuExternalYaw::updateQuaternionsFromEulerRad(float roll_rad, float pitch_rad, float yaw_rad)
 {
 	float cr = cos(roll_rad * 0.5F);
 	float sr = sin(roll_rad_ * 0.5F);
@@ -100,7 +100,7 @@ void ImuUtils::updateQuaternionsFromEulerRad(float roll_rad, float pitch_rad, fl
 	q3_ = crcp * sy - sr * spcy;
 }
 
-void ImuUtils::calculateRollPitchYaw()
+void ImuExternalYaw::calculateRollPitchYaw()
 {
 	roll_rad_ = atan2(2.0 * (q0_ * q1_ + q2_ * q3_), (1.0 - 2.0 * (q1_ * q1_ + q2_ * q2_)));
 	pitch_rad_ = asin(2 * (q0_ * q2_ - q3_ * q1_));
@@ -115,24 +115,24 @@ void ImuUtils::calculateRollPitchYaw()
 	}
 }
 
-void ImuUtils::getAttitudeRad(float attitude[])
+void ImuExternalYaw::getAttitudeRad(float attitude[])
 {
 	attitude[0] = roll_rad_;
 	attitude[1] = pitch_rad_;
 	attitude[2] = yaw_rad_;
 }
 
-float ImuUtils::getRollRad()
+float ImuExternalYaw::getRollRad()
 {
 	return roll_rad_;
 }
 
-float ImuUtils::getPitchRad()
+float ImuExternalYaw::getPitchRad()
 {
 	return pitch_rad_;
 }
 
-float ImuUtils::getYawRad()
+float ImuExternalYaw::getYawRad()
 {
 	float y = yaw_rad_;
 	if (y > kTwoPi)
@@ -146,7 +146,7 @@ float ImuUtils::getYawRad()
 	return (y);
 }
 
-void ImuUtils::getQuat(float quat[])
+void ImuExternalYaw::getQuat(float quat[])
 {
 	quat[0] = q0_;
 	quat[1] = q1_;
