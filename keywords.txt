@@ -1,0 +1,12 @@
+ImuUtils  KEYWORD1
+hardReset  KEYWORD2
+softReset    KEYWORD2
+updateQuaternionsFromEulerRad KEYWORD2
+updateImuWithQuat   KEYWORD2
+rotateDeltaYawRad   KEYWORD2
+calculateRollPitchYaw   KEYWORD2
+getAttitudeRad  KEYWORD2
+getRollRad  KEYWORD2
+getPitchRad KEYWORD2
+getYawRad   KEYWORD2
+getQuat KEYWORD2
