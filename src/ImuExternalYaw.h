@@ -8,7 +8,7 @@ public:
 	void resetQuatUpright();
 	void resetQuatWithAccel(float accel[]);
 	void updateQuaternionsFromEulerRad(float roll_rad, float pitch_rad, float yaw_rad);
-	void updateImuWithQuatDifferentialYaw(float []);
+	void updateImuWithQuatDifferentialYaw(float q[]);
 	void rotateYawRad(float delta_yaw_rad);
 	void calculateRollPitchYaw();
 	void getAttitudeRad(float attitude[]);
