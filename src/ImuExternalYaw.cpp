@@ -1,5 +1,12 @@
 #include "ImuExternalYaw.h"
 
+void ImuExternalYaw::setQuaternions(float quat[]) {
+  q0_ = quat[0];
+  q1_ = quat[1];
+  q2_ = quat[2];
+  q3_ = quat[3];
+}
+
 void ImuExternalYaw::resetQuatUpright()
 {
 	q0_ = 1.0f;
